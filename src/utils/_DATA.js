@@ -4,7 +4,8 @@ let users = {
   lightning: {
     id: "lightning",
     name: "Lightning Farron",
-    avatarURL: "../assets/farron.jpg",
+    avatarURL:
+      "https://i.pinimg.com/736x/46/ee/d1/46eed19eb75ab06bbc4242facbaf1bda--anime-fantasy-final-fantasy.jpg",
     answers: {
       "8xf0y6ziyjabvozdd253nd": "optionOne",
       "6ni6ok3ym7mf1p33lnez": "optionTwo",
@@ -16,7 +17,8 @@ let users = {
   cloud: {
     id: "cloud",
     name: "Cloud Strife",
-    avatarURL: "../assets/cloud.jpg",
+    avatarURL:
+      "https://orig05.deviantart.net/9fd1/f/2007/287/8/b/ko_cloud_by_semokan.jpg",
     answers: {
       vthrdm985a262al8qx3do: "optionOne",
       xj352vofupe1dqz9emx13r: "optionTwo"
@@ -26,7 +28,8 @@ let users = {
   lucis: {
     id: "lucis",
     name: "Lucis Noctis",
-    avatarURL: "../assets/lucis.jpg",
+    avatarURL:
+      "https://i.pinimg.com/originals/71/5e/20/715e2038ab819df3ead4a5cb3081b783.jpg",
     answers: {
       xj352vofupe1dqz9emx13r: "optionOne",
       vthrdm985a262al8qx3do: "optionTwo",
@@ -39,10 +42,10 @@ let users = {
 let questions = {
   "8xf0y6ziyjabvozdd253nd": {
     id: "8xf0y6ziyjabvozdd253nd",
-    author: "sarahedo",
+    author: "lightning",
     timestamp: 1467166872634,
     optionOne: {
-      votes: ["sarahedo"],
+      votes: ["lightning"],
       text: "have horrible short term memory"
     },
     optionTwo: {
@@ -52,66 +55,66 @@ let questions = {
   },
   "6ni6ok3ym7mf1p33lnez": {
     id: "6ni6ok3ym7mf1p33lnez",
-    author: "johndoe",
+    author: "lucis",
     timestamp: 1468479767190,
     optionOne: {
       votes: [],
       text: "become a superhero"
     },
     optionTwo: {
-      votes: ["johndoe", "sarahedo"],
+      votes: ["lucis", "lightning"],
       text: "become a supervillain"
     }
   },
   am8ehyc8byjqgar0jgpub9: {
     id: "am8ehyc8byjqgar0jgpub9",
-    author: "sarahedo",
+    author: "lightning",
     timestamp: 1488579767190,
     optionOne: {
       votes: [],
       text: "be telekinetic"
     },
     optionTwo: {
-      votes: ["sarahedo"],
+      votes: ["lightning"],
       text: "be telepathic"
     }
   },
   loxhs1bqm25b708cmbf3g: {
     id: "loxhs1bqm25b708cmbf3g",
-    author: "tylermcginnis",
+    author: "cloud",
     timestamp: 1482579767190,
     optionOne: {
       votes: [],
       text: "be a front-end developer"
     },
     optionTwo: {
-      votes: ["sarahedo"],
+      votes: ["lightning"],
       text: "be a back-end developer"
     }
   },
   vthrdm985a262al8qx3do: {
     id: "vthrdm985a262al8qx3do",
-    author: "tylermcginnis",
+    author: "cloud",
     timestamp: 1489579767190,
     optionOne: {
-      votes: ["tylermcginnis"],
+      votes: ["cloud"],
       text: "find $50 yourself"
     },
     optionTwo: {
-      votes: ["johndoe"],
+      votes: ["lucis"],
       text: "have your best friend find $500"
     }
   },
   xj352vofupe1dqz9emx13r: {
     id: "xj352vofupe1dqz9emx13r",
-    author: "johndoe",
+    author: "lucis",
     timestamp: 1493579767190,
     optionOne: {
-      votes: ["johndoe"],
+      votes: ["lucis"],
       text: "write JavaScript"
     },
     optionTwo: {
-      votes: ["tylermcginnis"],
+      votes: ["cloud"],
       text: "write Swift"
     }
   }
