@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import { handleInitialData } from "../actions/shared";
 import NavBar from "./navbar/NavBar";
 import Signin from "./signin/Signin";
+import Home from "./home/Home";
+import ProfileCard from "./profilecard/ProfileCard";
 
 class App extends Component {
 	componentDidMount() {
@@ -11,7 +13,8 @@ class App extends Component {
 	render() {
 		return (
 			<Fragment>
-				{this.props.loading === true ? null : <Signin />}
+				<ProfileCard />
+				<ProfileCard />
 			</Fragment>
 		);
 	}

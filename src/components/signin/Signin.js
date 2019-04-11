@@ -107,9 +107,25 @@ class Signin extends Component {
 							</List>
 						</Collapse>
 						<Button className={styles.btn} variant="contained">
-							{authedUser === null
-								? "Sign in"
-								: `Welcome ${authedUser}`}
+							{authedUser === null ? (
+								<Typography
+									align="center"
+									variant="button"
+									component="p"
+									className={styles.btn__text}
+								>
+									Sign in
+								</Typography>
+							) : (
+								<Typography
+									align="center"
+									variant="button"
+									component="p"
+									className={styles.btn__text}
+								>
+									`Welcome ${authedUser}`
+								</Typography>
+							)}
 						</Button>
 					</CardContent>
 				</div>
