@@ -12,7 +12,6 @@ class App extends Component {
 		return (
 			<Fragment>
 				{this.props.loading === true ? null : <Signin />}
-				{this.props.navbarLoading === true ? null : <NavBar />}
 			</Fragment>
 		);
 	}
@@ -20,18 +19,18 @@ class App extends Component {
 
 function mapStateToProps({ authedUser, users }) {
 	let loading = true;
-	let navbarLoading = true;
+	// let navbarLoading = true;
 	if (users.cloud !== undefined) {
 		loading = false;
 	}
 
-	if (authedUser !== null) {
-		navbarLoading = false;
-	}
+	// if (authedUser !== null) {
+	// 	navbarLoading = false;
+	// }
 
 	return {
-		loading,
-		navbarLoading
+		loading
+		// navbarLoading
 	};
 }
 

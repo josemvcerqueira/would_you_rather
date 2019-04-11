@@ -57,13 +57,7 @@ class NavBar extends React.Component {
                 <Tab
                   disabled
                   className={styles.avatar}
-                  icon={
-                    <Avatar
-                      className={styles.opacity}
-                      src={avatar}
-                      alt={name + " photo"}
-                    />
-                  }
+                  icon={<Avatar src={avatar} alt={name + " photo"} />}
                 />
                 <LinkTab label="Logout" />
               </Tabs>
