@@ -4,6 +4,7 @@ import { handleAuthedUser } from "../../actions/authedUser";
 import logo from "../../assets/react-redux.png";
 import {
 	Avatar,
+	Button,
 	Card,
 	CardContent,
 	Typography,
@@ -64,7 +65,7 @@ class Signin extends Component {
 		return (
 			<Card className={styles.card}>
 				<div className={styles.cardactionarea}>
-					<CardContent>
+					<CardContent className={styles.container}>
 						<CardHead />
 						<ListItem button onClick={this.handleClick}>
 							<ListItemIcon>
@@ -104,6 +105,9 @@ class Signin extends Component {
 									  ))}
 							</List>
 						</Collapse>
+						<Button className={styles.btn} variant="contained">
+							Primary
+						</Button>
 					</CardContent>
 				</div>
 			</Card>

@@ -1,3 +1,22 @@
+.container {
+	display: flex !important;
+	flex-direction: column !important;
+}
+
+.btn {
+	display: block;
+	color: white !important;
+	background-color: rgb(58, 50, 118) !important;
+	transition: ease-out 0.4s !important;
+	margin-top: 2rem !important;
+	width: 20rem !important;
+	align-self: center !important;
+}
+
+.btn:hover {
+	transform: scale(1.1);
+}
+
 .card {
 	max-width: 50vw;
 	margin: 0 auto;
