@@ -1,3 +1,5 @@
+import { formatQuestion } from "./helpers.js";
+
 let users = {
   lightning: {
     id: "lightning",
@@ -115,26 +117,6 @@ let questions = {
   }
 };
 
-function generateUID() {
-  return (
-    Math.random()
-      .toString(36)
-      .substring(2, 15) +
-    Math.random()
-      .toString(36)
-      .substring(2, 15)
-  );
-}
-
-export function getInitialData() {
-  return Promise.all([_getUsers(), _getQuestions()]).then(
-    ([users, questions]) => ({
-      users,
-      questions
-    })
-  );
-}
-
 export function _getUsers() {
   return new Promise((res, rej) => {
     setTimeout(() => res({ ...users }), 1000);
@@ -145,22 +127,6 @@ export function _getQuestions() {
   return new Promise((res, rej) => {
     setTimeout(() => res({ ...questions }), 1000);
   });
-}
-
-function formatQuestion({ optionOneText, optionTwoText, author }) {
-  return {
-    id: generateUID(),
-    timestamp: Date.now(),
-    author,
-    optionOne: {
-      votes: [],
-      text: optionOneText
-    },
-    optionTwo: {
-      votes: [],
-      text: optionTwoText
-    }
-  };
 }
 
 export function _saveQuestion(question) {

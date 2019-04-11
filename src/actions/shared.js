@@ -1,4 +1,4 @@
-import { getInitialData } from "../utils/_DATA";
+import { getInitialData } from "../utils/api";
 import { getUsers } from "./users";
 import { getQUestions } from "./questions";
 
