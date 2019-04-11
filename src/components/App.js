@@ -2,7 +2,7 @@ import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { handleInitialData } from "../actions/shared";
 import NavBar from "./navbar/NavBar";
-// import Signin from "./signin/Signin";
+import Signin from "./signin/Signin";
 
 class App extends Component {
 	componentDidMount() {
@@ -11,10 +11,28 @@ class App extends Component {
 	render() {
 		return (
 			<Fragment>
-				<NavBar />
+				{this.props.loading === true ? null : <Signin />}
+				{this.props.navbarLoading === true ? null : <NavBar />}
 			</Fragment>
 		);
 	}
 }
 
-export default connect()(App);
+function mapStateToProps({ authedUser, users }) {
+	let loading = true;
+	let navbarLoading = true;
+	if (users.cloud !== undefined) {
+		loading = false;
+	}
+
+	if (authedUser !== null) {
+		navbarLoading = false;
+	}
+
+	return {
+		loading,
+		navbarLoading
+	};
+}
+
+export default connect(mapStateToProps)(App);

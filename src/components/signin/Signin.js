@@ -15,6 +15,7 @@ import {
 	List
 } from "@material-ui/core";
 import {
+	Check,
 	ExpandLess,
 	ExpandMore,
 	SupervisedUserCircle
@@ -41,7 +42,7 @@ const CardHead = () => {
 				component="h2"
 				className={styles.subtitle}
 			>
-				Sign In
+				Choose a user
 			</Typography>
 		</Fragment>
 	);
@@ -49,7 +50,7 @@ const CardHead = () => {
 
 class Signin extends Component {
 	state = {
-		open: true
+		open: false
 	};
 
 	handleClick = () => {
@@ -61,7 +62,7 @@ class Signin extends Component {
 	};
 
 	render() {
-		const { usersArr, loading } = this.props;
+		const { usersArr, authedUser } = this.props;
 		return (
 			<Card className={styles.card}>
 				<div className={styles.cardactionarea}>
@@ -80,33 +81,35 @@ class Signin extends Component {
 							unmountOnExit
 						>
 							<List component="div" disablePadding>
-								{loading === true
-									? null
-									: usersArr.map(user => (
-											<ListItem
-												key={user.name}
-												button
-												onClick={() => {
-													this.handleAuthedUserClick(
-														user
-													);
-												}}
-											>
-												<Avatar
-													src={user.avatarURL}
-													alt={user.name + " photo"}
-												/>
+								{usersArr.map(user => (
+									<ListItem
+										key={user.name}
+										button
+										onClick={() => {
+											this.handleAuthedUserClick(user);
+										}}
+									>
+										<Avatar
+											src={user.avatarURL}
+											alt={user.name + " photo"}
+										/>
 
-												<ListItemText
-													inset
-													primary={user.name}
-												/>
-											</ListItem>
-									  ))}
+										<ListItemText
+											inset
+											primary={user.name}
+										/>
+										{authedUser !== null &&
+										authedUser === user.id ? (
+											<Check className={styles.checker} />
+										) : null}
+									</ListItem>
+								))}
 							</List>
 						</Collapse>
 						<Button className={styles.btn} variant="contained">
-							Primary
+							{authedUser === null
+								? "Sign in"
+								: `Welcome ${authedUser}`}
 						</Button>
 					</CardContent>
 				</div>
@@ -115,10 +118,10 @@ class Signin extends Component {
 	}
 }
 
-function mapStateToProps({ users }) {
+function mapStateToProps({ users, authedUser }) {
 	const { cloud, lightning, lucis } = users;
 	const usersArr = [cloud, lightning, lucis];
-	return { usersArr, loading: usersArr[0] === undefined };
+	return { usersArr, authedUser };
 }
 
 export default connect(mapStateToProps)(Signin);

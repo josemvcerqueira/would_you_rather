@@ -1,5 +1,6 @@
 import React from "react";
-import { AppBar, Tabs, NoSsr, Tab } from "@material-ui/core";
+import { connect } from "react-redux";
+import { AppBar, Avatar, Tabs, NoSsr, Tab } from "@material-ui/core";
 import styles from "./NavBar.module.css";
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 import deepPurple from "@material-ui/core/colors/deepPurple";
@@ -9,12 +10,20 @@ const theme = createMuiTheme({
     secondary: {
       main: deepPurple[100]
     }
+  },
+  typography: {
+    useNextVariants: true
   }
 });
 
 function LinkTab(props) {
   return (
-    <Tab component="a" onClick={event => event.preventDefault()} {...props} />
+    <Tab
+      className={styles.tab}
+      component="a"
+      onClick={event => event.preventDefault()}
+      {...props}
+    />
   );
 }
 
@@ -29,28 +38,50 @@ class NavBar extends React.Component {
 
   render() {
     const { value } = this.state;
+    const { avatar, name } = this.props;
 
     return (
-      <NoSsr>
-        <div className={styles.navbar}>
-          <AppBar className={styles.bgColor} position="static">
-            <MuiThemeProvider theme={theme}>
+      <MuiThemeProvider theme={theme}>
+        <NoSsr>
+          <div className={styles.div}>
+            <AppBar className={styles.appbar} position="static">
               <Tabs
-                variant="fullWidth"
+                variant="standard"
                 value={value}
                 onChange={this.handleChange}
                 indicatorColor="secondary"
               >
-                <LinkTab label="Page One" />
-                <LinkTab label="Page Two" />
-                <LinkTab label="Page Three" />
+                <LinkTab label="Home" />
+                <LinkTab label="New Question" />
+                <LinkTab label="Leaderboard" />
+                <Tab
+                  disabled
+                  className={styles.avatar}
+                  icon={
+                    <Avatar
+                      className={styles.opacity}
+                      src={avatar}
+                      alt={name + " photo"}
+                    />
+                  }
+                />
+                <LinkTab label="Logout" />
               </Tabs>
-            </MuiThemeProvider>
-          </AppBar>
-        </div>
-      </NoSsr>
+            </AppBar>
+          </div>
+        </NoSsr>
+      </MuiThemeProvider>
     );
   }
 }
 
-export default NavBar;
+function mapStateToProps({ authedUser, users }) {
+  const currentUser = users[authedUser];
+
+  return {
+    avatar: currentUser.avatarURL,
+    name: currentUser.name
+  };
+}
+
+export default connect(mapStateToProps)(NavBar);
