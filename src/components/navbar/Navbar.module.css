@@ -1,0 +1,7 @@
+.bgColor {
+	background-color: rgb(58, 50, 118) !important;
+}
+
+.navbar {
+	flex-grow: 1 !important;
+}
