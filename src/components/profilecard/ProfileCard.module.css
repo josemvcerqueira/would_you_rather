@@ -1,20 +1,35 @@
 .card {
 	max-width: 30rem !important;
 	margin: 0 auto;
-	margin-bottom: 2rem;
+	margin-bottom: 1.5rem;
+	display: flex !important;
+	flex-direction: column !important;
+	transition: 0.3s ease-in-out;
+}
+
+.card:hover {
+	transform: scale(1.02);
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3) !important;
+}
+
+.cardactionarea {
 	display: flex !important;
 }
 
 .media {
 	height: 140px !important;
+	flex-basis: 10rem !important;
+	padding: 0.5rem !important;
+}
+
+.divider {
+	height: 7rem !important;
+	width: 0.1rem !important;
 }
 
 .title {
 	color: rgb(58, 50, 118) !important;
-	margin-bottom: 2rem !important;
+	margin: 1rem !important;
 	font-weight: 200 !important;
-	font-size: 1.5rem !important;
-	margin-top: 2rem !important;
+	font-size: 1.15rem !important;
 }
-
-

@@ -1,0 +1,29 @@
+.container {
+	display: flex !important;
+	flex-direction: column !important;
+	flex-grow: 1 !important;
+	padding: 0.5rem !important;
+}
+
+.content {
+	flex-grow: 1 !important;
+}
+
+.subtitle {
+	color: rgb(58, 50, 118) !important;
+	font-weight: 200 !important;
+	font-size: 1rem !important;
+}
+
+.body {
+	margin-top: 1.7rem !important;
+	color: rgb(14, 8, 59) !important;
+	font-weight: 400 !important;
+	font-size: 0.9rem !important;
+}
+
+.button {
+	width: 14rem !important;
+	margin: 0 auto !important;
+	margin-bottom: 0.3rem !important;
+}

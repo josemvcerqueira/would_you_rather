@@ -2,5 +2,6 @@
 *::after,
 *::before {
 	box-sizing: inherit;
-	outline: solid 0.25rem red;
+	/*	outline: solid 0.25rem red;
+*/
 }

@@ -1,43 +1,28 @@
 import React from "react";
-import {
-  Card,
-  CardActionArea,
-  CardActions,
-  CardContent,
-  CardMedia,
-  Button,
-  Typography
-} from "@material-ui/core";
+import { Card, CardMedia, Divider, Typography } from "@material-ui/core";
 import styles from "./ProfileCard.module.css";
+import CardContent from "../home/CardContent";
 
 const ProfileCard = props => {
   return (
     <Card className={styles.card}>
-      <CardActionArea>
-        <Typography
-          className={styles.title}
-          align="center"
-          gutterBottom
-          variant="h4"
-          component="h1"
-        >
-          Lizard
-        </Typography>
+      <Typography
+        className={styles.title}
+        align="left"
+        variant="h4"
+        component="h1"
+      >
+        Lightninng Asks:
+      </Typography>
+      <div className={styles.cardactionarea}>
         <CardMedia
           className={styles.media}
-          image="/static/images/cards/contemplative-reptile.jpg"
+          image="https://i.pinimg.com/originals/71/5e/20/715e2038ab819df3ead4a5cb3081b783.jpg"
           title="Contemplative Reptile"
         />
+        <Divider className={styles.divider} variant="middle" />
         <CardContent />
-      </CardActionArea>
-      <CardActions>
-        <Button size="small" color="primary">
-          Share
-        </Button>
-        <Button size="small" color="primary">
-          Learn More
-        </Button>
-      </CardActions>
+      </div>
     </Card>
   );
 };
