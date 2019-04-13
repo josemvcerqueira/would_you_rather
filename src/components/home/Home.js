@@ -1,6 +1,6 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
-import { randomOption } from "../../utils/helpers";
+import { unAnswered, answered } from "../../utils/helpers";
 import ProfileCard from "../profilecard/ProfileCard";
 import CardContent from "./CardContent";
 import { AppBar, Tabs, Tab } from "@material-ui/core/";
@@ -28,70 +28,62 @@ class Home extends Component {
 	};
 
 	render() {
-		const { arr } = this.props;
-		console.log(arr);
+		const { unansweredData, answeredData } = this.props;
+		const { value } = this.state;
 		return (
 			<div className={styles.width}>
-				<MuiThemeProvider theme={theme}>
-					<AppBar
-						className={styles.appbar}
-						position="static"
-						color="default"
-					>
-						<Tabs
-							value={this.state.value}
-							onChange={this.handleChange}
-							textColor="secondary"
-							indicatorColor="secondary"
-							variant="fullWidth"
-							className={styles.tabs}
-						>
-							<Tab label="Unanswered Questions" />
-							<Tab label="Answered Questions" />
-						</Tabs>
-						{arr.map(obj => (
-							<div key={obj.text}>
-								<ProfileCard
-									avatar={obj.avatar}
-									author={obj.author}
-								>
-									<CardContent text={obj.text} />
-								</ProfileCard>
-							</div>
-						))}
-					</AppBar>
-				</MuiThemeProvider>
+				<AppBar
+					className={styles.appbar}
+					position="static"
+					color="default"
+				>
+					<Fragment>
+						<MuiThemeProvider theme={theme}>
+							<Tabs
+								value={this.state.value}
+								onChange={this.handleChange}
+								textColor="secondary"
+								indicatorColor="secondary"
+								variant="fullWidth"
+								className={styles.tabs}
+							>
+								<Tab label="Unanswered Questions" />
+								<Tab label="Answered Questions" />
+							</Tabs>
+						</MuiThemeProvider>
+						{!value &&
+							unansweredData.map(obj => (
+								<div key={obj.text}>
+									<ProfileCard
+										avatar={obj.avatar}
+										author={obj.author}
+									>
+										<CardContent text={obj.text} />
+									</ProfileCard>
+								</div>
+							))}
+						{!value ||
+							answeredData.map(obj => (
+								<div key={obj.text}>
+									<ProfileCard
+										avatar={obj.avatar}
+										author={obj.author}
+									>
+										<CardContent text={obj.text} />
+									</ProfileCard>
+								</div>
+							))}
+					</Fragment>
+				</AppBar>
 			</div>
 		);
 	}
 }
 
 function mapStateToProps({ authedUser, questions, users }) {
-	const questionsIds = Reflect.ownKeys(questions);
-	const answeredIds = Reflect.ownKeys(users[authedUser].answers);
-	const unansweredIds = questionsIds.filter(
-		question => answeredIds.indexOf(question) === -1
-	);
-	const unansweredAuthors = unansweredIds.map(id => questions[id].author);
-	const unansweredText = unansweredIds.map(
-		id => questions[id][randomOption("optionOne", "optionTwo")].text
-	);
-	const unsAuthorsAvatars = unansweredAuthors.map(
-		name => users[name].avatarURL
-	);
-
-	let arr = [];
-
-	for (let i = 0; i < unansweredIds.length; i++) {
-		arr.push({
-			avatar: unsAuthorsAvatars[i],
-			text: unansweredText[i],
-			author: unansweredAuthors[i]
-		});
-	}
-
 	return {
-		arr
+		unansweredData: unAnswered(authedUser, questions, users),
+		answeredData: answered(authedUser, questions, users)
 	};
 }
 
