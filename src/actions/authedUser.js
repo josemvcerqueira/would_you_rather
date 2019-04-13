@@ -9,7 +9,6 @@ function selectAuthedUser(id) {
 
 export function handleAuthedUser(id) {
 	return dispatch => {
-		console.log("hello from action");
 		dispatch(selectAuthedUser(id));
 	};
 }

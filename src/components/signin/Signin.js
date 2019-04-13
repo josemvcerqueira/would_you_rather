@@ -123,7 +123,7 @@ class Signin extends Component {
 									component="p"
 									className={styles.btn__text}
 								>
-									`Welcome ${authedUser}`
+									Welcome {authedUser}
 								</Typography>
 							)}
 						</Button>

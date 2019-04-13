@@ -24,3 +24,8 @@ export function formatQuestion({ optionOneText, optionTwoText, author }) {
 		}
 	};
 }
+
+export function randomOption(x, y) {
+	const result = Math.random() < 0.5;
+	return result >= 0.5 ? x : y;
+}

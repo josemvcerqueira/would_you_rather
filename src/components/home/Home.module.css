@@ -1,4 +1,12 @@
 .width {
 	width: 30rem !important;
-	margin: 0 auto;
+	margin: 0 auto !important ;
+}
+
+.tabs {
+	margin-bottom: 2rem;
+}
+
+.appbar {
+	padding: 1rem !important;
 }

@@ -2,7 +2,7 @@ import React from "react";
 import { Button, Typography } from "@material-ui/core";
 import styles from "./CardContent.module.css";
 
-const CardContent = props => {
+const CardContent = ({ text }) => {
   return (
     <div className={styles.container}>
       <div className={styles.content}>
@@ -12,15 +12,15 @@ const CardContent = props => {
           variant="h4"
           component="h2"
         >
-          Lightninng Asks:
+          Would you rather?
         </Typography>
         <Typography
           className={styles.body}
           align="center"
           variant="body2"
-          component="body"
+          component="p"
         >
-          Random Text
+          {text} <br /> or ...
         </Typography>
       </div>
       <Button
