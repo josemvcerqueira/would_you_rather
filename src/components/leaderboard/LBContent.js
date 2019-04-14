@@ -3,7 +3,7 @@ import { List, ListItem, ListItemText, Typography } from "@material-ui/core";
 import { Stars } from "@material-ui/icons";
 import styles from "./LBContent.module.css";
 
-const LBContent = ({ score = 10, winner = false }) => {
+const LBContent = ({ score, winner, questions, answers }) => {
   return (
     <div className={styles.container}>
       {winner && <Stars className={styles.icon} />}
@@ -23,14 +23,14 @@ const LBContent = ({ score = 10, winner = false }) => {
                 className={styles.item}
                 primary="Answered questions"
               />
-              <ListItemText primary="2" />
+              <ListItemText primary={answers} />
             </ListItem>
             <ListItem button>
               <ListItemText
                 className={styles.item}
                 primary="Created questions"
               />
-              <ListItemText primary="3" />
+              <ListItemText primary={questions} />
             </ListItem>
           </List>
         </div>

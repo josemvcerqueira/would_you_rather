@@ -2,7 +2,7 @@ import React from "react";
 import { Card, CardMedia, Divider, Typography } from "@material-ui/core";
 import styles from "./ProfileCard.module.css";
 
-const ProfileCard = ({ avatar = null, author, subtitle = null, children }) => {
+const ProfileCard = ({ avatar, author, subtitle = null, children }) => {
   return (
     <Card className={styles.card}>
       <Typography

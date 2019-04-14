@@ -85,3 +85,50 @@ export function answered(authedUser, questions, users) {
 
 	return arr;
 }
+
+export function leaderboardScores(users) {
+	const usersArr = Reflect.ownKeys(users);
+	const avatars = usersArr.map(user => users[user].avatarURL);
+	const names = usersArr.map(user => users[user].name);
+	const numberOfAnswers = usersArr.map(
+		user => Reflect.ownKeys(users[user].answers).length
+	);
+	const numberOfQuestions = usersArr.map(
+		user => users[user].questions.length
+	);
+
+	const scores = numberOfAnswers.map(
+		(answers, index) => answers + numberOfQuestions[index]
+	);
+
+	const highestScore = Math.max(...scores);
+
+	function reducer(highestScore) {
+		return function(acc, score) {
+			if (score === highestScore) {
+				acc.push(true);
+			} else {
+				acc.push(false);
+			}
+			return acc;
+		};
+	}
+	const winners = scores.reduce(reducer(highestScore), []);
+
+	let arr = [];
+
+	for (let i = 0; i < usersArr.length; i++) {
+		arr.push({
+			avatar: avatars[i],
+			name: names[i],
+			numberOfAnswers: numberOfAnswers[i],
+			numberOfQuestions: numberOfQuestions[i],
+			score: scores[i],
+			winner: winners[i]
+		});
+	}
+
+	arr.sort((a, b) => b.score - a.score);
+
+	return arr;
+}
