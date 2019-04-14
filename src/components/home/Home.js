@@ -2,7 +2,7 @@ import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { unAnswered, answered } from "../../utils/helpers";
 import ProfileCard from "../profilecard/ProfileCard";
-import CardContent from "./CardContent";
+import HomeContent from "./HomeContent";
 import { AppBar, Tabs, Tab } from "@material-ui/core/";
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 import styles from "./Home.module.css";
@@ -57,8 +57,9 @@ class Home extends Component {
 									<ProfileCard
 										avatar={obj.avatar}
 										author={obj.author}
+										subtitle="asks:"
 									>
-										<CardContent text={obj.text} />
+										<HomeContent text={obj.text} />
 									</ProfileCard>
 								</div>
 							))}
@@ -68,8 +69,9 @@ class Home extends Component {
 									<ProfileCard
 										avatar={obj.avatar}
 										author={obj.author}
+										subtitle="asks:"
 									>
-										<CardContent text={obj.text} />
+										<HomeContent text={obj.text} />
 									</ProfileCard>
 								</div>
 							))}

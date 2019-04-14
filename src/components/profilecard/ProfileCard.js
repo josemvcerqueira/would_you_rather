@@ -2,7 +2,7 @@ import React from "react";
 import { Card, CardMedia, Divider, Typography } from "@material-ui/core";
 import styles from "./ProfileCard.module.css";
 
-const ProfileCard = ({ avatar, author, children }) => {
+const ProfileCard = ({ avatar = null, author, subtitle = null, children }) => {
   return (
     <Card className={styles.card}>
       <Typography
@@ -11,7 +11,7 @@ const ProfileCard = ({ avatar, author, children }) => {
         variant="h4"
         component="h1"
       >
-        {author} Asks:
+        {author} {subtitle}
       </Typography>
       <div className={styles.cardactionarea}>
         <CardMedia

@@ -1,0 +1,48 @@
+.root {
+	width: 100%;
+	max-width: 30rem;
+}
+
+.container {
+	display: flex !important;
+	position: relative !important;
+	flex-direction: column !important;
+	flex-grow: 1 !important;
+	padding: 0.5rem !important;
+}
+
+.content {
+	flex-grow: 1 !important;
+}
+
+.title {
+	color: rgb(58, 50, 118) !important;
+	margin: 0 !important;
+	font-weight: 400 !important;
+	font-size: 2rem !important;
+	margin-bottom: 2rem !important;
+}
+
+.body {
+	margin-top: 1.1rem !important;
+	color: rgb(14, 8, 59) !important;
+	font-weight: 400 !important;
+	font-size: 0.9rem !important;
+}
+
+.item {
+	width: 8rem !important;
+}
+
+.divider {
+	height: 7rem !important;
+	width: 0.1rem !important;
+}
+
+.icon {
+	transform: scale(1.3);
+	color: gold;
+	position: absolute !important;
+	left: 10rem !important;
+	top: 1.1rem !important;
+}

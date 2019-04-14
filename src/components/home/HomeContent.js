@@ -1,8 +1,8 @@
 import React from "react";
 import { Button, Typography } from "@material-ui/core";
-import styles from "./CardContent.module.css";
+import styles from "./HomeContent.module.css";
 
-const CardContent = ({ text }) => {
+const HomeContent = ({ text }) => {
   return (
     <div className={styles.container}>
       <div className={styles.content}>
@@ -35,4 +35,4 @@ const CardContent = ({ text }) => {
   );
 };
 
-export default CardContent;
+export default HomeContent;
