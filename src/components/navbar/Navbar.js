@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { handleLogout } from "../../actions/authedUser";
 import { AppBar, Avatar, Tabs, NoSsr, Tab } from "@material-ui/core";
 import styles from "./NavBar.module.css";
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
@@ -17,14 +18,7 @@ const theme = createMuiTheme({
 });
 
 function LinkTab(props) {
-  return (
-    <Tab
-      className={styles.tab}
-      component="a"
-      onClick={event => event.preventDefault()}
-      {...props}
-    />
-  );
+  return <Tab className={styles.tab} component="a" {...props} />;
 }
 
 class NavBar extends React.Component {
@@ -34,6 +28,11 @@ class NavBar extends React.Component {
 
   handleChange = (event, value) => {
     this.setState({ value });
+  };
+
+  handleLogout = event => {
+    event.preventDefault();
+    this.props.dispatch(handleLogout(null));
   };
 
   render() {
@@ -59,7 +58,7 @@ class NavBar extends React.Component {
                   className={styles.avatar}
                   icon={<Avatar src={avatar} alt={name + " photo"} />}
                 />
-                <LinkTab label="Logout" />
+                <LinkTab onClick={this.handleLogout} label="Logout" />
               </Tabs>
             </AppBar>
           </div>
