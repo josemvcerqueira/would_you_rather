@@ -5,6 +5,7 @@ import Signin from "./signin/Signin";
 import Home from "./home/Home";
 import Leaderboard from "./leaderboard/Leaderboard";
 import NavBar from "./navbar/NavBar";
+import NewQuestion from "./newquestion/NewQuestion";
 
 class App extends Component {
 	componentDidMount() {
@@ -14,7 +15,7 @@ class App extends Component {
 		return (
 			<Fragment>
 				{this.props.loading ? null : <Signin />}
-				{this.props.navbarLoading ? null : <NavBar />}
+				{this.props.navbarLoading ? null : <NewQuestion />}
 			</Fragment>
 		);
 	}

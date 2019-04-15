@@ -1,7 +1,7 @@
 *,
 *::after,
 *::before {
-	/*box-sizing: inherit;
-	outline: solid 0.25rem red;
+	box-sizing: inherit;
+	/*	outline: solid 0.25rem red;
 */
 }

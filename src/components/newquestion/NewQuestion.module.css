@@ -1,0 +1,75 @@
+.container {
+	padding: 2rem !important;
+	width: 30rem !important;
+	margin: 0 auto !important;
+	margin-top: 2rem !important;
+	transition: 0.3s ease-in-out !important;
+}
+
+.container:hover {
+	transform: scale(1.01);
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3) !important;
+}
+
+.title {
+	color: rgb(58, 50, 118) !important;
+	font-size: 2rem !important;
+	font-weight: 400 !important;
+	margin-bottom: 0.5rem !important;
+}
+
+.subtitle {
+	color: rgb(58, 50, 118) !important;
+	font-size: 1.5rem !important;
+	font-weight: 200 !important;
+	margin-top: 1.5rem !important;
+	margin-bottom: 2rem !important;
+}
+
+.question {
+	font-size: 1rem !important;
+	font-weight: 400 !important;
+	margin-top: 1.5rem !important;
+	margin-bottom: 1rem !important;
+}
+
+.input {
+	width: 20rem !important;
+}
+
+.relative {
+	position: relative;
+}
+
+.dividerLeft {
+	top: 10px !important;
+	left: 0px !important;
+	width: 14rem !important;
+}
+
+.dividerRight {
+	top: 10px !important;
+	left: 255px !important;
+	width: 14rem !important;
+}
+
+.center {
+	display: flex;
+	justify-content: center;
+}
+
+.btn {
+	display: block;
+	background-color: rgb(58, 50, 118) !important;
+	transition: ease-out 0.4s !important;
+	margin-top: 2rem !important;
+	width: 20rem !important;
+}
+
+.btn:hover {
+	transform: scale(1.05);
+}
+
+.btn__text {
+	color: white !important;
+}
