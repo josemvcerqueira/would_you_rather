@@ -8,10 +8,49 @@ import {
 	Paper,
 	Typography
 } from "@material-ui/core";
+import { connect } from "react-redux";
+import { handleNewQuestion } from "../../actions/questions";
 import styles from "./NewQuestion.module.css";
 
 class NewQuestion extends Component {
+	state = {
+		optionOne: "",
+		optionTwo: ""
+	};
+
+	handleOptionOne = value => {
+		this.setState(() => ({
+			optionOne: value
+		}));
+	};
+
+	handleOptionTwo = value => {
+		this.setState(() => ({
+			optionTwo: value
+		}));
+	};
+
+	handleSubmit = event => {
+		event.preventDefault();
+		const { optionOne, optionTwo } = this.state;
+		const { authedUser, dispatch } = this.props;
+		const question = {
+			optionOneText: optionOne,
+			optionTwoText: optionTwo,
+			author: authedUser
+		};
+
+		dispatch(handleNewQuestion(question)).then(
+			this.setState(() => ({
+				optionOne: "",
+				optionTwo: ""
+			}))
+		);
+	};
+
 	render() {
+		const { optionOne, optionTwo } = this.state;
+		const { handleOptionOne, handleOptionTwo, handleSubmit } = this;
 		return (
 			<Paper className={styles.container}>
 				<Typography
@@ -41,7 +80,11 @@ class NewQuestion extends Component {
 				</Typography>
 				<FormControl>
 					<InputLabel>Option One</InputLabel>
-					<Input className={styles.input} />
+					<Input
+						onChange={event => handleOptionOne(event.target.value)}
+						value={optionOne}
+						className={styles.input}
+					/>
 				</FormControl>
 				<div className={styles.relative}>
 					<Divider className={styles.dividerRight} absolute={true} />
@@ -49,7 +92,7 @@ class NewQuestion extends Component {
 						align="center"
 						variant="h4"
 						component="h4"
-						className={styles.question}
+						className={styles.or}
 					>
 						or
 					</Typography>
@@ -57,10 +100,18 @@ class NewQuestion extends Component {
 				</div>
 				<FormControl>
 					<InputLabel>Option Two</InputLabel>
-					<Input className={styles.input} />
+					<Input
+						onChange={event => handleOptionTwo(event.target.value)}
+						value={optionTwo}
+						className={styles.input}
+					/>
 				</FormControl>
 				<div className={styles.center}>
-					<Button className={styles.btn} variant="contained">
+					<Button
+						onClick={event => handleSubmit(event)}
+						className={styles.btn}
+						variant="contained"
+					>
 						<Typography
 							align="center"
 							variant="button"
@@ -76,4 +127,10 @@ class NewQuestion extends Component {
 	}
 }
 
-export default NewQuestion;
+function mapStateToProps({ authedUser }) {
+	return {
+		authedUser
+	};
+}
+
+export default connect(mapStateToProps)(NewQuestion);
