@@ -1,0 +1,40 @@
+.container {
+	display: flex !important;
+	flex-direction: column !important;
+	flex-grow: 1 !important;
+	padding: 0.5rem !important;
+}
+
+.title {
+	color: rgb(58, 50, 118) !important;
+	margin: 0 !important;
+	font-weight: 400 !important;
+	font-size: 2rem !important;
+	margin-bottom: 1rem !important;
+}
+
+.subtitle {
+	color: rgb(58, 50, 118) !important;
+	font-size: 0.8rem !important;
+	font-weight: 400 !important;
+	margin-bottom: 1rem !important;
+}
+
+.paper {
+	padding: 1rem !important;
+	margin: 0.5rem !important;
+}
+
+.winner {
+	padding: 1rem !important;
+	margin: 0.5rem !important;
+	border-style: solid;
+	border-color: gold;
+}
+
+.votes {
+	margin-top: 1rem !important;
+	color: rgb(14, 8, 59) !important;
+	font-size: 1rem !important;
+	font-weight: 800 !important;
+}
