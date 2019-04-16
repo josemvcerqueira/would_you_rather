@@ -10,9 +10,9 @@ import {
 } from "@material-ui/core";
 import { connect } from "react-redux";
 import { handleNewQuestion } from "../../actions/questions";
-import styles from "./NewQuestion.module.css";
+import styles from "./NewPoll.module.css";
 
-class NewQuestion extends Component {
+class NewPoll extends Component {
 	state = {
 		optionOne: "",
 		optionTwo: ""
@@ -133,4 +133,4 @@ function mapStateToProps({ authedUser }) {
 	};
 }
 
-export default connect(mapStateToProps)(NewQuestion);
+export default connect(mapStateToProps)(NewPoll);

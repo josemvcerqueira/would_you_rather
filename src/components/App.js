@@ -5,7 +5,7 @@ import Signin from "./signin/Signin";
 import Home from "./home/Home";
 import Leaderboard from "./leaderboard/Leaderboard";
 import NavBar from "./navbar/NavBar";
-import NewQuestion from "./newquestion/NewQuestion";
+import NewPoll from "./newpoll/NewPoll";
 import PollResult from "./pollresult/PollResult";
 
 class App extends Component {
