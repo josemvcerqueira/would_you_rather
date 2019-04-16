@@ -7,6 +7,7 @@ import Leaderboard from "./leaderboard/Leaderboard";
 import NavBar from "./navbar/NavBar";
 import NewPoll from "./newpoll/NewPoll";
 import PollResult from "./pollresult/PollResult";
+import Poll from "./poll/Poll";
 
 class App extends Component {
 	componentDidMount() {
@@ -16,7 +17,7 @@ class App extends Component {
 		return (
 			<Fragment>
 				{this.props.loading ? null : <Signin />}
-				{this.props.navbarLoading ? null : <PollResult />}
+				{this.props.navbarLoading ? null : <Poll />}
 			</Fragment>
 		);
 	}
