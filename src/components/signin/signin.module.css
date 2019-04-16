@@ -33,6 +33,10 @@
 	padding: 2rem;
 }
 
+.list {
+	width: 18.5rem !important;
+}
+
 .title {
 	color: rgb(58, 50, 118) !important;
 	margin-bottom: 2rem !important;

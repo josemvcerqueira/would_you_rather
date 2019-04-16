@@ -69,7 +69,11 @@ class Signin extends Component {
 				<div className={styles.cardactionarea}>
 					<CardContent className={styles.container}>
 						<CardHead />
-						<ListItem button onClick={this.handleClick}>
+						<ListItem
+							className={styles.list}
+							button
+							onClick={this.handleClick}
+						>
 							<ListItemIcon>
 								<SupervisedUserCircle />
 							</ListItemIcon>
@@ -81,7 +85,11 @@ class Signin extends Component {
 							timeout="auto"
 							unmountOnExit
 						>
-							<List component="div" disablePadding>
+							<List
+								component="div"
+								disablePadding
+								className={styles.list}
+							>
 								{usersArr.map(user => (
 									<ListItem
 										key={user.name}
