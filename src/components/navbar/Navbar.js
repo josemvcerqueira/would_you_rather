@@ -1,10 +1,12 @@
 import React from "react";
+import { withRouter, NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import { handleLogout } from "../../actions/authedUser";
 import { AppBar, Avatar, Tabs, NoSsr, Tab } from "@material-ui/core";
 import styles from "./NavBar.module.css";
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 import deepPurple from "@material-ui/core/colors/deepPurple";
+import { handleLocation } from "../../utils/helpers";
 
 const theme = createMuiTheme({
   palette: {
@@ -18,13 +20,21 @@ const theme = createMuiTheme({
 });
 
 function LinkTab(props) {
-  return <Tab className={styles.tab} component="a" {...props} />;
+  return <Tab className={styles.tab} {...props} />;
 }
 
 class NavBar extends React.Component {
   state = {
     value: 0
   };
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.location.pathname !== nextProps.location.pathname) {
+      this.setState({
+        value: handleLocation(nextProps.location)
+      });
+    }
+  }
 
   handleChange = (event, value) => {
     this.setState({ value });
@@ -33,11 +43,12 @@ class NavBar extends React.Component {
   handleLogout = event => {
     event.preventDefault();
     this.props.dispatch(handleLogout(null));
+    this.props.history.push("/");
   };
 
   render() {
-    const { value } = this.state;
     const { avatar, name } = this.props;
+    const { value } = this.state;
 
     return (
       <MuiThemeProvider theme={theme}>
@@ -50,15 +61,28 @@ class NavBar extends React.Component {
                 onChange={this.handleChange}
                 indicatorColor="secondary"
               >
-                <LinkTab label="Home" />
-                <LinkTab label="New Question" />
-                <LinkTab label="Leaderboard" />
+                <LinkTab component={NavLink} to="/home" label="Home" />
+                <LinkTab
+                  component={NavLink}
+                  to="newquestion"
+                  label="New Question"
+                />
+                <LinkTab
+                  component={NavLink}
+                  to="leaderboard"
+                  label="Leaderboard"
+                />
                 <Tab
                   disabled
                   className={styles.avatar}
                   icon={<Avatar src={avatar} alt={name + " photo"} />}
                 />
-                <LinkTab onClick={this.handleLogout} label="Logout" />
+                <LinkTab
+                  component={NavLink}
+                  to="/"
+                  onClick={this.handleLogout}
+                  label="Logout"
+                />
               </Tabs>
             </AppBar>
           </div>
@@ -77,4 +101,4 @@ function mapStateToProps({ authedUser, users }) {
   };
 }
 
-export default connect(mapStateToProps)(NavBar);
+export default connect(mapStateToProps)(withRouter(NavBar));

@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from "react";
+import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
 import { connect } from "react-redux";
 import { handleInitialData } from "../actions/shared";
 import Signin from "./signin/Signin";
@@ -8,35 +9,79 @@ import NavBar from "./navbar/NavBar";
 import NewPoll from "./newpoll/NewPoll";
 import PollResult from "./pollresult/PollResult";
 import Poll from "./poll/Poll";
+import ErrorPage from "./errorpage/ErrorPage";
 
 class App extends Component {
 	componentDidMount() {
 		this.props.dispatch(handleInitialData());
 	}
 	render() {
+		const { initialData, authedUser } = this.props;
 		return (
-			<Fragment>
-				{this.props.loading ? null : <Signin />}
-				{this.props.navbarLoading ? null : <Poll />}
-			</Fragment>
+			<BrowserRouter>
+				{initialData ? null : (
+					<Switch>
+						<Route exact path="/" component={Signin} />
+						<Route
+							path="/home"
+							render={() =>
+								authedUser ? (
+									<Redirect exact to="/" />
+								) : (
+									<Fragment>
+										<NavBar />
+										<Home />
+									</Fragment>
+								)
+							}
+						/>
+						<Route
+							path="/newquestion"
+							render={() =>
+								authedUser ? (
+									<Redirect exact to="/" />
+								) : (
+									<Fragment>
+										<NavBar />
+										<NewPoll />
+									</Fragment>
+								)
+							}
+						/>
+						<Route
+							path="/leaderboard"
+							render={() =>
+								authedUser ? (
+									<Redirect exact to="/" />
+								) : (
+									<Fragment>
+										<NavBar />
+										<Leaderboard />
+									</Fragment>
+								)
+							}
+						/>
+						<Route component={ErrorPage} />
+						/>
+					</Switch>
+				)}
+			</BrowserRouter>
 		);
 	}
 }
 
 function mapStateToProps({ authedUser, users }) {
-	let loading = true;
-	let navbarLoading = true;
-	if (users.cloud !== undefined) {
-		loading = false;
+	function isEmpty(obj) {
+		for (let key in obj) {
+			if (obj.hasOwnProperty(key)) return false;
+		}
+		return true;
 	}
-
-	if (authedUser !== null) {
-		navbarLoading = false;
-	}
+	const initialData = isEmpty(users);
 
 	return {
-		loading,
-		navbarLoading
+		initialData,
+		authedUser: authedUser === null
 	};
 }
 

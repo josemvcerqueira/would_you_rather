@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from "react";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { handleAuthedUser } from "../../actions/authedUser";
 import logo from "../../assets/react-redux.png";
@@ -106,27 +107,40 @@ class Signin extends Component {
 								))}
 							</List>
 						</Collapse>
-						<Button className={styles.btn} variant="contained">
-							{authedUser === null ? (
-								<Typography
-									align="center"
-									variant="button"
-									component="p"
-									className={styles.btn__text}
+
+						{authedUser === null ? (
+							<Link to={"/"}>
+								<Button
+									className={styles.btn}
+									variant="contained"
 								>
-									Sign in
-								</Typography>
-							) : (
-								<Typography
-									align="center"
-									variant="button"
-									component="p"
-									className={styles.btn__text}
+									<Typography
+										align="center"
+										variant="button"
+										component="p"
+										className={styles.btn__text}
+									>
+										Sign in
+									</Typography>
+								</Button>
+							</Link>
+						) : (
+							<Link to={"/home"}>
+								<Button
+									className={styles.btn}
+									variant="contained"
 								>
-									Welcome {authedUser}
-								</Typography>
-							)}
-						</Button>
+									<Typography
+										align="center"
+										variant="button"
+										component="p"
+										className={styles.btn__text}
+									>
+										Welcome {authedUser}
+									</Typography>
+								</Button>
+							</Link>
+						)}
 					</CardContent>
 				</div>
 			</Card>

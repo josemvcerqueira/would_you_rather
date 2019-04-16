@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import ProfileCard from "../profilecard/ProfileCard";
 import PollContent from "./PollContent";
 import styles from "./Poll.module.css";

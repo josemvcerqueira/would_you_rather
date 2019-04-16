@@ -4,6 +4,7 @@
 
 .div {
 	flex-grow: 1 !important;
+	margin-bottom: 2rem !important;
 }
 
 .tab {

@@ -132,3 +132,13 @@ export function leaderboardScores(users) {
 
 	return arr;
 }
+
+export function handleLocation(location) {
+	let result;
+
+	if (location.pathname === "/home") return (result = 0);
+	else if (location.pathname === "/newquestion") return (result = 1);
+	else if (location.pathname === "/leaderboard") return (result = 2);
+
+	return result;
+}
