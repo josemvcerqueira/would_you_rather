@@ -8,6 +8,7 @@ class PollContent extends Component {
 		barTwo: 80
 	};
 	render() {
+		console.log(this.props);
 		const { barOne, barTwo } = this.state;
 		return (
 			<div className={styles.container}>
@@ -28,7 +29,7 @@ class PollContent extends Component {
 						variant="h4"
 						component="h3"
 					>
-						Would you rather be a javaer
+						{this.props.optionOneText}
 					</Typography>
 					<LinearProgress variant="determinate" value={barOne} />
 					<Typography
@@ -51,7 +52,7 @@ class PollContent extends Component {
 						variant="h4"
 						component="h3"
 					>
-						Would you rather be a javascripter?
+						{this.props.optionTwoText}
 					</Typography>
 					<LinearProgress variant="determinate" value={barTwo} />
 					<Typography

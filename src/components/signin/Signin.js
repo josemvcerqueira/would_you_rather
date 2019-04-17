@@ -33,7 +33,7 @@ const CardHead = () => {
 				component="h1"
 				className={styles.title}
 			>
-				Welcome to the Would You Rather Web App!
+				Welcome to the <br /> Would You Rather <br /> Web App!
 			</Typography>
 			<img className={styles.img} src={logo} alt="Logo" />
 			<Typography
