@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import styles from "./PollResult.module.css";
-import ProfileCard from "../profilecard/ProfileCard";
+import ProfileCard from "../../profilecard/ProfileCard";
 import PollContent from "./PollContent";
 
 class PollResult extends Component {

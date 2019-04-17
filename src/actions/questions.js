@@ -19,7 +19,6 @@ export function saveQuestion(question) {
 export function handleNewQuestion(question) {
 	return dispatch => {
 		return saveQuestionAPI(question).then(formattedQuestion => {
-			console.log(formattedQuestion);
 			dispatch(saveQuestion(formattedQuestion));
 		});
 	};

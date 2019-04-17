@@ -42,9 +42,21 @@ export function unAnswered(authedUser, questions, users) {
 		question => answeredIds.indexOf(question) === -1
 	);
 	const unansweredAuthors = unansweredIds.map(id => questions[id].author);
+	const unansweredTimestamp = unansweredIds.map(
+		id => questions[id].timestamp
+	);
 	const unansweredText = unansweredIds.map(
 		id => questions[id][randomOption("optionOne", "optionTwo")].text
 	);
+
+	const unansweredOptionOne = unansweredIds.map(
+		id => questions[id].optionOne.text
+	);
+
+	const unansweredOptionTwo = unansweredIds.map(
+		id => questions[id].optionTwo.text
+	);
+
 	const unsAuthorsAvatars = unansweredAuthors.map(
 		name => users[name].avatarURL
 	);
@@ -53,11 +65,17 @@ export function unAnswered(authedUser, questions, users) {
 
 	for (let i = 0; i < unansweredIds.length; i++) {
 		arr.push({
+			id: unansweredIds[i],
 			avatar: unsAuthorsAvatars[i],
 			text: unansweredText[i],
-			author: capitalize(unansweredAuthors[i])
+			author: capitalize(unansweredAuthors[i]),
+			optionOne: unansweredOptionOne[i],
+			optionTwo: unansweredOptionTwo[i],
+			timestamp: unansweredTimestamp[i]
 		});
 	}
+
+	arr.sort((a, b) => b.timestamp - a.timestamp);
 
 	return arr;
 }
@@ -65,6 +83,7 @@ export function unAnswered(authedUser, questions, users) {
 export function answered(authedUser, questions, users) {
 	const answeredIds = Reflect.ownKeys(users[authedUser].answers);
 	const answeredAuthors = answeredIds.map(id => questions[id].author);
+	const answeredTimestamp = answeredIds.map(id => questions[id].timestamp);
 	const answeredText = answeredIds.map(
 		id => questions[id][randomOption("optionOne", "optionTwo")].text
 	);
@@ -73,15 +92,39 @@ export function answered(authedUser, questions, users) {
 		author => users[author].avatarURL
 	);
 
+	const answeredOptionOne = answeredIds.map(
+		id => questions[id].optionOne.text
+	);
+
+	const answeredOptionTwo = answeredIds.map(
+		id => questions[id].optionTwo.text
+	);
+
+	const answeredOptionOneVotes = answeredIds.map(
+		id => questions[id].optionOne.votes.length
+	);
+
+	const answeredOptionTwoVotes = answeredIds.map(
+		id => questions[id].optionTwo.votes.length
+	);
+
 	let arr = [];
 
 	for (let i = 0; i < answeredIds.length; i++) {
 		arr.push({
+			id: answeredIds[i],
 			avatar: answeredAvatars[i],
 			text: answeredText[i],
-			author: capitalize(answeredAuthors[i])
+			author: capitalize(answeredAuthors[i]),
+			optionOneText: answeredOptionOne[i],
+			optionTwoText: answeredOptionTwo[i],
+			optionOneVotes: answeredOptionOneVotes[i],
+			optionTwoVotes: answeredOptionTwoVotes[i],
+			timestamp: answeredTimestamp[i]
 		});
 	}
+
+	arr.sort((a, b) => b.timestamp - a.timestamp);
 
 	return arr;
 }
@@ -139,6 +182,5 @@ export function handleLocation(location) {
 	if (location.pathname === "/home") return (result = 0);
 	else if (location.pathname === "/newquestion") return (result = 1);
 	else if (location.pathname === "/leaderboard") return (result = 2);
-
-	return result;
+	else return (result = 3);
 }

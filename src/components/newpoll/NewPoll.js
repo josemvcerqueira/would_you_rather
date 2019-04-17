@@ -8,6 +8,7 @@ import {
 	Paper,
 	Typography
 } from "@material-ui/core";
+import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { handleNewQuestion } from "../../actions/questions";
 import styles from "./NewPoll.module.css";
@@ -33,12 +34,15 @@ class NewPoll extends Component {
 	handleSubmit = event => {
 		event.preventDefault();
 		const { optionOne, optionTwo } = this.state;
-		const { authedUser, dispatch } = this.props;
+		const { authedUser, dispatch, history } = this.props;
 		const question = {
 			optionOneText: optionOne,
 			optionTwoText: optionTwo,
 			author: authedUser
 		};
+
+		if (!question.optionOneText || !question.optionTwoText) return;
+		if (question.optionOneText === question.optionTwoText) return;
 
 		dispatch(handleNewQuestion(question)).then(
 			this.setState(() => ({
@@ -46,6 +50,7 @@ class NewPoll extends Component {
 				optionTwo: ""
 			}))
 		);
+		history.push("/home");
 	};
 
 	render() {
@@ -81,6 +86,7 @@ class NewPoll extends Component {
 				<FormControl>
 					<InputLabel>Option One</InputLabel>
 					<Input
+						required={true}
 						onChange={event => handleOptionOne(event.target.value)}
 						value={optionOne}
 						className={styles.input}
@@ -101,21 +107,20 @@ class NewPoll extends Component {
 				<FormControl>
 					<InputLabel>Option Two</InputLabel>
 					<Input
+						required={true}
 						onChange={event => handleOptionTwo(event.target.value)}
 						value={optionTwo}
 						className={styles.input}
 					/>
 				</FormControl>
-				<div className={styles.center}>
+				<div className={styles.btnContainer}>
 					<Button
 						onClick={event => handleSubmit(event)}
 						className={styles.btn}
-						variant="contained"
 					>
 						<Typography
 							align="center"
 							variant="button"
-							component="p"
 							className={styles.btn__text}
 						>
 							Submit
@@ -133,4 +138,4 @@ function mapStateToProps({ authedUser }) {
 	};
 }
 
-export default connect(mapStateToProps)(NewPoll);
+export default connect(mapStateToProps)(withRouter(NewPoll));

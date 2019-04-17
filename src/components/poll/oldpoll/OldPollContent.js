@@ -9,7 +9,7 @@ import {
 	FormControlLabel,
 	Radio
 } from "@material-ui/core";
-import styles from "./PollContent.module.css";
+import styles from "./OldPollContent.module.css";
 
 const theme = createMuiTheme({
 	palette: {
@@ -22,7 +22,7 @@ const theme = createMuiTheme({
 	}
 });
 
-class PollContent extends Component {
+class OldPollContent extends Component {
 	state = {
 		value: ""
 	};
@@ -45,14 +45,14 @@ class PollContent extends Component {
 						onChange={this.handleChange}
 					>
 						<FormControlLabel
-							value="be a JS dev"
+							value={this.props.optionOne}
 							control={<Radio color="secondary" />}
-							label="be a JS dev"
+							label={this.props.optionOne}
 						/>
 						<FormControlLabel
-							value="be a JAVA dev"
+							value={this.props.optionTwo}
 							control={<Radio color="secondary" />}
-							label="be a JAVA dev"
+							label={this.props.optionTwo}
 						/>
 					</RadioGroup>
 				</FormControl>
@@ -71,4 +71,4 @@ class PollContent extends Component {
 	}
 }
 
-export default PollContent;
+export default OldPollContent;

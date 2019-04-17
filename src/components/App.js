@@ -7,7 +7,6 @@ import Home from "./home/Home";
 import Leaderboard from "./leaderboard/Leaderboard";
 import NavBar from "./navbar/NavBar";
 import NewPoll from "./newpoll/NewPoll";
-import PollResult from "./pollresult/PollResult";
 import Poll from "./poll/Poll";
 import ErrorPage from "./errorpage/ErrorPage";
 
@@ -31,6 +30,19 @@ class App extends Component {
 									<Fragment>
 										<NavBar />
 										<Home />
+									</Fragment>
+								)
+							}
+						/>
+						<Route
+							path="/poll/:id"
+							render={() =>
+								authedUser ? (
+									<Redirect exact to="/" />
+								) : (
+									<Fragment>
+										<NavBar />
+										<Poll />
 									</Fragment>
 								)
 							}

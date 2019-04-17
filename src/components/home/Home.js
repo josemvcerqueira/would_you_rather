@@ -53,25 +53,31 @@ class Home extends Component {
 						</MuiThemeProvider>
 						{!value &&
 							unansweredData.map(obj => (
-								<div key={obj.text}>
+								<div key={obj.id}>
 									<ProfileCard
 										avatar={obj.avatar}
 										author={obj.author}
 										subtitle="asks:"
 									>
-										<HomeContent text={obj.text} />
+										<HomeContent
+											id={obj.id}
+											text={obj.text}
+										/>
 									</ProfileCard>
 								</div>
 							))}
 						{!value ||
 							answeredData.map(obj => (
-								<div key={obj.text}>
+								<div key={obj.id}>
 									<ProfileCard
 										avatar={obj.avatar}
 										author={obj.author}
 										subtitle="asks:"
 									>
-										<HomeContent text={obj.text} />
+										<HomeContent
+											id={obj.id}
+											text={obj.text}
+										/>
 									</ProfileCard>
 								</div>
 							))}

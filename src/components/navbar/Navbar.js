@@ -64,12 +64,12 @@ class NavBar extends React.Component {
                 <LinkTab component={NavLink} to="/home" label="Home" />
                 <LinkTab
                   component={NavLink}
-                  to="newquestion"
+                  to="/newquestion"
                   label="New Question"
                 />
                 <LinkTab
                   component={NavLink}
-                  to="leaderboard"
+                  to="/leaderboard"
                   label="Leaderboard"
                 />
                 <Tab
