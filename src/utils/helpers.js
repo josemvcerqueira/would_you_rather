@@ -179,8 +179,24 @@ export function leaderboardScores(users) {
 export function handleLocation(location) {
 	let result;
 
-	if (location.pathname === "/home") return (result = 0);
-	else if (location.pathname === "/newquestion") return (result = 1);
-	else if (location.pathname === "/leaderboard") return (result = 2);
-	else return (result = 3);
+	if (location.pathname === "/home") result = 0;
+	else if (location.pathname === "/newquestion") result = 1;
+	else if (location.pathname === "/leaderboard") result = 2;
+	else result = 3;
+
+	return result;
+}
+
+export function handleVotes(optionOneVote, optionTwoVote) {
+	const totalVotes = optionOneVote + optionTwoVote;
+	const firstPercentage = (optionOneVote / totalVotes) * 100;
+	const secondPercentage = (optionTwoVote / totalVotes) * 100;
+
+	return {
+		totalVotes,
+		firstPercentage,
+		secondPercentage,
+		optionOneVote,
+		optionTwoVote
+	};
 }

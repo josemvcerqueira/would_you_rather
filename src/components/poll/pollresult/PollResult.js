@@ -1,7 +1,8 @@
 import React from "react";
 import styles from "./PollResult.module.css";
+import { handleVotes } from "../../../utils/helpers";
 import ProfileCard from "../../profilecard/ProfileCard";
-import PollContent from "./PollContent";
+import PollResultContent from "./PollResultContent";
 
 const PollResult = ({
 	author,
@@ -14,11 +15,10 @@ const PollResult = ({
 	return (
 		<div className={styles.container}>
 			<ProfileCard author={author} avatar={avatar} subtitle={"asked"}>
-				<PollContent
+				<PollResultContent
+					data={handleVotes(optionOneVotes, optionTwoVotes)}
 					optionOneText={optionOneText}
 					optionTwoText={optionTwoText}
-					optionOneVotes={optionOneVotes}
-					optionTwoVotes={optionTwoVotes}
 				/>
 			</ProfileCard>
 		</div>

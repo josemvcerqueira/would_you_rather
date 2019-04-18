@@ -9,7 +9,7 @@ const OldPoll = props => {
 			<ProfileCard
 				avatar={props.avatar}
 				author={props.author}
-				subtitle={props.subtitle}
+				subtitle="asks"
 			>
 				<OldPollContent
 					optionOne={props.optionOne}

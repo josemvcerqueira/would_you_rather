@@ -38,3 +38,12 @@
 	font-size: 1rem !important;
 	font-weight: 800 !important;
 }
+
+.button {
+	width: 14rem !important;
+	background-color: rgb(58, 50, 118) !important;
+	margin: 0 auto !important;
+	margin-top: 0.5rem !important;
+	margin-bottom: 0.3rem !important;
+}
+
