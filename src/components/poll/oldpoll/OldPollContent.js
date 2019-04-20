@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { handleSaveVote } from "../../../actions/questions";
 import {
 	Button,
 	createMuiTheme,
@@ -31,7 +33,23 @@ class OldPollContent extends Component {
 		this.setState({ value: event.target.value });
 	};
 
+	handleSubmit = () => {
+		let answer;
+		if (this.state.value === this.props.optionOne) {
+			answer = "optionOne";
+		} else {
+			answer = "optionTwo";
+		}
+		const vote = {
+			authedUser: this.props.authedUser,
+			qid: this.props.id,
+			answer
+		};
+		this.props.dispatch(handleSaveVote(vote));
+	};
+
 	render() {
+		const { handleSubmit, handleChange, state } = this;
 		return (
 			<div className={styles.container}>
 				<FormControl component="fieldset">
@@ -41,8 +59,8 @@ class OldPollContent extends Component {
 					<RadioGroup
 						aria-label="Would you rather ..."
 						name="would you rather"
-						value={this.state.value}
-						onChange={this.handleChange}
+						value={state.value}
+						onChange={handleChange}
 					>
 						<FormControlLabel
 							value={this.props.optionOne}
@@ -62,6 +80,7 @@ class OldPollContent extends Component {
 						variant="contained"
 						size="small"
 						color="secondary"
+						onClick={handleSubmit}
 					>
 						Submit
 					</Button>
@@ -71,4 +90,10 @@ class OldPollContent extends Component {
 	}
 }
 
-export default OldPollContent;
+function mapStateToProps({ authedUser }) {
+	return {
+		authedUser
+	};
+}
+
+export default connect(mapStateToProps)(OldPollContent);

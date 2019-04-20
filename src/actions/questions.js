@@ -1,6 +1,10 @@
-import { saveQuestion as saveQuestionAPI } from "../utils/api";
+import {
+	saveQuestion as saveQuestionAPI,
+	saveQuestionAnswer
+} from "../utils/api";
 export const GET_QUESTIONS = "GET_QUESTIONS";
 export const SAVE_QUESTION = "SAVE_QUESTION";
+export const SAVE_VOTE = "SAVE_VOTE";
 
 export function getQuestions(questions) {
 	return {
@@ -16,10 +20,22 @@ export function saveQuestion(question) {
 	};
 }
 
+export function saveVote(vote) {
+	return {
+		type: SAVE_VOTE,
+		vote
+	};
+}
+
 export function handleNewQuestion(question) {
 	return dispatch => {
 		return saveQuestionAPI(question).then(formattedQuestion => {
 			dispatch(saveQuestion(formattedQuestion));
 		});
 	};
+}
+
+export function handleSaveVote(vote) {
+	saveQuestionAnswer(vote);
+	return dispatch => dispatch(saveVote(vote));
 }

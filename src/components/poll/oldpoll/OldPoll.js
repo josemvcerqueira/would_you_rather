@@ -12,6 +12,7 @@ const OldPoll = props => {
 				subtitle="asks"
 			>
 				<OldPollContent
+					id={props.id}
 					optionOne={props.optionOne}
 					optionTwo={props.optionTwo}
 				/>

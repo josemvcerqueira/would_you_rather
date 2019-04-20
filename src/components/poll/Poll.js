@@ -9,6 +9,7 @@ const Poll = ({ answeredData, unansweredData }) => {
 	if (unansweredData.length) {
 		return (
 			<OldPoll
+				id={unansweredData[0].id}
 				author={unansweredData[0].author}
 				optionOne={unansweredData[0].optionOne}
 				optionTwo={unansweredData[0].optionTwo}
