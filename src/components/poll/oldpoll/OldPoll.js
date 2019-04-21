@@ -3,18 +3,14 @@ import ProfileCard from "../../profilecard/ProfileCard";
 import OldPollContent from "./OldPollContent";
 import styles from "./OldPoll.module.css";
 
-const OldPoll = props => {
+const OldPoll = ({ avatar, author, id, optionOne, optionTwo }) => {
 	return (
 		<div className={styles.container}>
-			<ProfileCard
-				avatar={props.avatar}
-				author={props.author}
-				subtitle="asks"
-			>
+			<ProfileCard avatar={avatar} author={author} subtitle="asks">
 				<OldPollContent
-					id={props.id}
-					optionOne={props.optionOne}
-					optionTwo={props.optionTwo}
+					id={id}
+					optionOne={optionOne}
+					optionTwo={optionTwo}
 				/>
 			</ProfileCard>
 		</div>

@@ -64,6 +64,7 @@ class Signin extends Component {
 
 	render() {
 		const { usersArr, authedUser } = this.props;
+		const { handleClick, state, handleAuthedUserClick } = this;
 		return (
 			<Card className={styles.card}>
 				<div className={styles.cardactionarea}>
@@ -72,7 +73,7 @@ class Signin extends Component {
 						<ListItem
 							className={styles.list}
 							button
-							onClick={this.handleClick}
+							onClick={handleClick}
 						>
 							<ListItemIcon>
 								<SupervisedUserCircle />
@@ -80,11 +81,7 @@ class Signin extends Component {
 							<ListItemText inset primary="Users" />
 							{this.state.open ? <ExpandLess /> : <ExpandMore />}
 						</ListItem>
-						<Collapse
-							in={this.state.open}
-							timeout="auto"
-							unmountOnExit
-						>
+						<Collapse in={state.open} timeout="auto" unmountOnExit>
 							<List
 								component="div"
 								disablePadding
@@ -95,7 +92,7 @@ class Signin extends Component {
 										key={user.name}
 										button
 										onClick={() => {
-											this.handleAuthedUserClick(user);
+											handleAuthedUserClick(user);
 										}}
 									>
 										<Avatar

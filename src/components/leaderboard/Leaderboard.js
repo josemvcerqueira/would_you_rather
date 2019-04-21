@@ -5,8 +5,7 @@ import styles from "./Leaderboard.module.css";
 import ProfileCard from "../profilecard/ProfileCard";
 import LBContent from "./LBContent";
 
-const Leaderboard = props => {
-	const { data } = props;
+const Leaderboard = ({ data }) => {
 	return (
 		<div className={styles.margin}>
 			{data.map(user => (

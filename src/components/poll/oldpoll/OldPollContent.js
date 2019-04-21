@@ -50,6 +50,7 @@ class OldPollContent extends Component {
 
 	render() {
 		const { handleSubmit, handleChange, state } = this;
+		const { optionOne, optionTwo } = this.props;
 		return (
 			<div className={styles.container}>
 				<FormControl component="fieldset">
@@ -63,14 +64,14 @@ class OldPollContent extends Component {
 						onChange={handleChange}
 					>
 						<FormControlLabel
-							value={this.props.optionOne}
+							value={optionOne}
 							control={<Radio color="secondary" />}
-							label={this.props.optionOne}
+							label={optionOne}
 						/>
 						<FormControlLabel
-							value={this.props.optionTwo}
+							value={optionTwo}
 							control={<Radio color="secondary" />}
-							label={this.props.optionTwo}
+							label={optionTwo}
 						/>
 					</RadioGroup>
 				</FormControl>

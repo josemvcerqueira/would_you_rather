@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import { withRouter, NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import { handleLogout } from "../../actions/authedUser";
@@ -23,7 +23,7 @@ function LinkTab(props) {
   return <Tab className={styles.tab} {...props} />;
 }
 
-class NavBar extends React.Component {
+class NavBar extends Component {
   state = {
     value: 0
   };
@@ -49,7 +49,7 @@ class NavBar extends React.Component {
   render() {
     const { avatar, name } = this.props;
     const { value } = this.state;
-
+    const { handleChange, handleLogout } = this;
     return (
       <MuiThemeProvider theme={theme}>
         <NoSsr>
@@ -58,7 +58,7 @@ class NavBar extends React.Component {
               <Tabs
                 variant="standard"
                 value={value}
-                onChange={this.handleChange}
+                onChange={handleChange}
                 indicatorColor="secondary"
               >
                 <LinkTab component={NavLink} to="/home" label="Home" />
@@ -80,7 +80,7 @@ class NavBar extends React.Component {
                 <LinkTab
                   component={NavLink}
                   to="/"
-                  onClick={this.handleLogout}
+                  onClick={handleLogout}
                   label="Logout"
                 />
               </Tabs>

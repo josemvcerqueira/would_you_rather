@@ -28,14 +28,15 @@ export function saveVote(vote) {
 }
 
 export function handleNewQuestion(question) {
-	return dispatch => {
-		return saveQuestionAPI(question).then(formattedQuestion => {
+	return dispatch =>
+		saveQuestionAPI(question).then(formattedQuestion => {
 			dispatch(saveQuestion(formattedQuestion));
 		});
-	};
 }
 
 export function handleSaveVote(vote) {
-	saveQuestionAnswer(vote);
-	return dispatch => dispatch(saveVote(vote));
+	return dispatch => {
+		dispatch(saveVote(vote));
+		saveQuestionAnswer(vote);
+	};
 }

@@ -14,7 +14,7 @@ const PollResult = ({
 }) => {
 	return (
 		<div className={styles.container}>
-			<ProfileCard author={author} avatar={avatar} subtitle={"asked"}>
+			<ProfileCard author={author} avatar={avatar} subtitle="asked">
 				<PollResultContent
 					data={handleVotes(optionOneVotes, optionTwoVotes)}
 					optionOneText={optionOneText}

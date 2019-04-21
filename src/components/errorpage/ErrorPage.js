@@ -28,7 +28,7 @@ const ErrorPage = () => {
 					>
 						👉
 					</span>
-					You need to head to our homepage to Sign in! Clik me{" "}
+					You need to head to our homepage to Sign in! Clik me
 					<span
 						role="img"
 						aria-label="hand pointing left"
