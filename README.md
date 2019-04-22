@@ -1,4 +1,72 @@
+# Would You Rather Web App
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+This web application allows the user to:
+
+-   Impersonate three users
+-   Create a new Poll
+-   Answer Polls
+-   View answered and unanswered Polls
+-   View a Leaderboard of the three users
+
+## Technology Stack
+
+-   React for the view library
+-   Redux for state management
+-   React Router for routing
+
+## TL;DR
+
+To run the project right away:
+
+-   clone the repo with `git clone https://github.com/josemvcerqueira/would_you_rather.git`
+-   install all project dependencies with `npm install`
+-   start the development server with `npm start`
+
+## What You're Getting
+
+The app is organized using the "Rails Style"
+
+```bash
+
+├── public
+├── src
+│   ├── components
+    │   ├── actions # Includes files for actions to be dispatched
+    │	├── actions # Includes image needed for the app
+    │   ├── components # Includes files for components to be rendered
+    │   ├── middleware # Includes files for the middleware to the redux store
+    │   ├── reducers # Includes files for the reducers to the redux store
+    │   ├── utils # Folder that includes a fake database, helper functions and API-like functions
+    │   ├── index.css # A file with the global styles
+    │   └── index.js # Index file where the store is created
+├── .gitignore # Simple file to prevent unnedded files to be stored on GitHub.
+├── README.md - This file.
+├── package-lock.json # npm package manager file.
+└── package.json # npm package manager file.
+
+```
+
+## Pseudo Backend Server
+
+The provided file [`api.js`](src/utils/api.js) contains the methods you will need to perform necessary operations on the backend:
+
+-   [`getInitialData`] - fetches the initial from the pseudo database to get the app runnning
+-   [`saveQuestion`] - saves a new Poll to the pseudo Database
+-   [`saveQuestionAnswer`] - saves the answer to an existing Poll to the pseudo Database
+
+The provided file [`helpers.js`](src/utils/helpers.js) contains the methods you will need to perform necessary operations on the backend:
+
+-   [`generateUID`] - generates a random ID to label new Polls
+-   [`randomOption`] - returns one of the 2 inputs based on a 50% chance
+-   [`capitalize`] - capitalizes the first letter of the its string input
+-   [`formatQuestion`] - returns a formatted Poll based on its inputs
+-   [`unAnswered`] - returns a properly formatted array of the unanswered Polls ready to be consumed
+-   [`answered`] - returns a properly formatted array of the answered Polls ready to be consumed
+-   [`leaderboardScores`] - returns a properly formatted array to properly render the Leaderboard
+-   [`handlelocation`] - allows the NavBar to display the correct page based on location pathname
+-   [`handleVotes`] - returns a properly formatted object to be rendered by the OldPoll component
 
 ## Available Scripts
 
@@ -31,34 +99,6 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 **Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
 ### Deployment
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
@@ -66,3 +106,7 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+## Purpose
+
+This repository is for educational purposes and part of the udacity curriculum.
