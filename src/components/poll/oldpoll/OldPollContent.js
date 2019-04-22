@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { handleSaveVote } from "../../../actions/questions";
 import {
@@ -96,5 +97,13 @@ function mapStateToProps({ authedUser }) {
 		authedUser
 	};
 }
+
+OldPollContent.propTypes = {
+	authedUser: PropTypes.string.isRequired,
+	dispatch: PropTypes.func.isRequired,
+	id: PropTypes.string.isRequired,
+	optionOne: PropTypes.string.isRequired,
+	optionTwo: PropTypes.string.isRequired
+};
 
 export default connect(mapStateToProps)(OldPollContent);

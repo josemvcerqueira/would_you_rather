@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import { withRouter, NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import { handleLogout } from "../../actions/authedUser";
@@ -100,5 +101,14 @@ function mapStateToProps({ authedUser, users }) {
     name: currentUser.name
   };
 }
+
+NavBar.propTypes = {
+  avatar: PropTypes.string.isRequired,
+  dispatch: PropTypes.func.isRequired,
+  history: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
+  match: PropTypes.object.isRequired,
+  name: PropTypes.string.isRequired
+};
 
 export default connect(mapStateToProps)(withRouter(NavBar));

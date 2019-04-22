@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { List, ListItem, ListItemText, Typography } from "@material-ui/core";
 import { Stars } from "@material-ui/icons";
 import styles from "./LBContent.module.css";
@@ -37,6 +38,13 @@ const LBContent = ({ score, winner, questions, answers }) => {
       </div>
     </div>
   );
+};
+
+LBContent.propTypes = {
+  answers: PropTypes.number.isRequired,
+  questions: PropTypes.number.isRequired,
+  score: PropTypes.number.isRequired,
+  winner: PropTypes.bool.isRequired
 };
 
 export default LBContent;

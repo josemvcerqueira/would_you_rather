@@ -1,9 +1,10 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
+import { answered, unAnswered } from "../../utils/helpers";
 import PollResult from "./pollresult/PollResult";
 import OldPoll from "./oldpoll/OldPoll";
-import { answered, unAnswered } from "../../utils/helpers";
 
 const Poll = ({ answeredData, unansweredData }) => {
 	if (unansweredData.length) {
@@ -45,5 +46,14 @@ function mapStateToProps({ users, authedUser, questions }, { match }) {
 		unansweredData
 	};
 }
+
+Poll.propTypes = {
+	answeredData: PropTypes.array.isRequired,
+	dispatch: PropTypes.func.isRequired,
+	history: PropTypes.object.isRequired,
+	location: PropTypes.object.isRequired,
+	match: PropTypes.object.isRequired,
+	unansweredData: PropTypes.array.isRequired
+};
 
 export default withRouter(connect(mapStateToProps)(Poll));

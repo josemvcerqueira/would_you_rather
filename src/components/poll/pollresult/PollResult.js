@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import styles from "./PollResult.module.css";
 import { handleVotes } from "../../../utils/helpers";
 import ProfileCard from "../../profilecard/ProfileCard";
@@ -23,6 +24,15 @@ const PollResult = ({
 			</ProfileCard>
 		</div>
 	);
+};
+
+PollResult.propTypes = {
+	author: PropTypes.string.isRequired,
+	avatar: PropTypes.string.isRequired,
+	optionOneText: PropTypes.string.isRequired,
+	optionOneVotes: PropTypes.number.isRequired,
+	optionTwoText: PropTypes.string.isRequired,
+	optionTwoVotes: PropTypes.number.isRequired
 };
 
 export default PollResult;

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { Typography } from "@material-ui/core";
 import styles from "./ErrorPage.module.css";
@@ -40,6 +41,12 @@ const ErrorPage = () => {
 			</h1>
 		</div>
 	);
+};
+
+ErrorPage.propTypes = {
+	history: PropTypes.object,
+	location: PropTypes.object,
+	match: PropTypes.object
 };
 
 export default ErrorPage;

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { leaderboardScores } from "../../utils/helpers";
 import styles from "./Leaderboard.module.css";
@@ -29,5 +30,10 @@ function mapStateToProps({ users }) {
 		data: leaderboardScores(users)
 	};
 }
+
+Leaderboard.propTypes = {
+	data: PropTypes.array.isRequired,
+	dispatch: PropTypes.func.isRequired
+};
 
 export default connect(mapStateToProps)(Leaderboard);

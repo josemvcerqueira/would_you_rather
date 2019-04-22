@@ -8,6 +8,7 @@ import {
 	Paper,
 	Typography
 } from "@material-ui/core";
+import PropTypes from "prop-types";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { handleNewQuestion } from "../../actions/questions";
@@ -137,5 +138,13 @@ function mapStateToProps({ authedUser }) {
 		authedUser
 	};
 }
+
+NewPoll.propTypes = {
+	authedUser: PropTypes.string.isRequired,
+	dispatch: PropTypes.func.isRequired,
+	history: PropTypes.object.isRequired,
+	location: PropTypes.object.isRequired,
+	match: PropTypes.object.isRequired
+};
 
 export default connect(mapStateToProps)(withRouter(NewPoll));

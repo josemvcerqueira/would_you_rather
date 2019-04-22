@@ -1,11 +1,12 @@
 import React, { Component, Fragment } from "react";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { unAnswered, answered } from "../../utils/helpers";
-import ProfileCard from "../profilecard/ProfileCard";
-import HomeContent from "./HomeContent";
 import { AppBar, Tabs, Tab } from "@material-ui/core/";
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 import styles from "./Home.module.css";
+import ProfileCard from "../profilecard/ProfileCard";
+import HomeContent from "./HomeContent";
 
 const theme = createMuiTheme({
 	palette: {
@@ -94,5 +95,11 @@ function mapStateToProps({ authedUser, questions, users }) {
 		answeredData: answered(authedUser, questions, users)
 	};
 }
+
+Home.propTypes = {
+	answeredData: PropTypes.array.isRequired,
+	dispatch: PropTypes.func.isRequired,
+	unansweredData: PropTypes.array.isRequired
+};
 
 export default connect(mapStateToProps)(Home);

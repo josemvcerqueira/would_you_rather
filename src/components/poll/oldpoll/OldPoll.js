@@ -1,7 +1,8 @@
 import React from "react";
+import PropTypes from "prop-types";
+import styles from "./OldPoll.module.css";
 import ProfileCard from "../../profilecard/ProfileCard";
 import OldPollContent from "./OldPollContent";
-import styles from "./OldPoll.module.css";
 
 const OldPoll = ({ avatar, author, id, optionOne, optionTwo }) => {
 	return (
@@ -15,6 +16,14 @@ const OldPoll = ({ avatar, author, id, optionOne, optionTwo }) => {
 			</ProfileCard>
 		</div>
 	);
+};
+
+OldPoll.propTypes = {
+	author: PropTypes.string.isRequired,
+	avatar: PropTypes.string.isRequired,
+	id: PropTypes.string.isRequired,
+	optionOne: PropTypes.string.isRequired,
+	optionTwo: PropTypes.string.isRequired
 };
 
 export default OldPoll;

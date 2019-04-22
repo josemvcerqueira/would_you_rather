@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import { withRouter } from "react-router-dom";
 import { Button, Paper, LinearProgress, Typography } from "@material-ui/core";
 import styles from "./PollResultContent.module.css";
@@ -99,5 +100,14 @@ class PollResultContent extends Component {
 		);
 	}
 }
+
+PollResultContent.propTypes = {
+	data: PropTypes.object.isRequired,
+	history: PropTypes.object.isRequired,
+	location: PropTypes.object.isRequired,
+	match: PropTypes.object.isRequired,
+	optionOneText: PropTypes.string.isRequired,
+	optionTwoText: PropTypes.string.isRequired
+};
 
 export default withRouter(PollResultContent);

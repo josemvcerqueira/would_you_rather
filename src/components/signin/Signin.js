@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from "react";
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { handleAuthedUser } from "../../actions/authedUser";
@@ -158,5 +159,14 @@ function mapStateToProps({ users, authedUser }) {
 	const usersArr = [cloud, lightning, lucis];
 	return { usersArr, authedUser };
 }
+
+Signin.propTypes = {
+	authedUser: PropTypes.string,
+	dispatch: PropTypes.func.isRequired,
+	history: PropTypes.object.isRequired,
+	location: PropTypes.object.isRequired,
+	match: PropTypes.object.isRequired,
+	usersArr: PropTypes.array.isRequired
+};
 
 export default connect(mapStateToProps)(Signin);

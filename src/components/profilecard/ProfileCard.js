@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Card, CardMedia, Divider, Typography } from "@material-ui/core";
 import styles from "./ProfileCard.module.css";
 
@@ -24,6 +25,12 @@ const ProfileCard = ({ avatar, author, subtitle = null, children }) => {
       </div>
     </Card>
   );
+};
+
+ProfileCard.propTypes = {
+  avatar: PropTypes.string.isRequired,
+  subtitle: PropTypes.string,
+  children: PropTypes.object.isRequired
 };
 
 export default ProfileCard;

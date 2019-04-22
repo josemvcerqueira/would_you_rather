@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { withRouter } from "react-router-dom";
 import { Button, Typography } from "@material-ui/core";
 import styles from "./HomeContent.module.css";
@@ -39,6 +40,14 @@ const HomeContent = ({ text, id, history }) => {
       </Button>
     </div>
   );
+};
+
+HomeContent.propTypes = {
+  history: PropTypes.object.isRequired,
+  id: PropTypes.string.isRequired,
+  location: PropTypes.object.isRequired,
+  match: PropTypes.object.isRequired,
+  text: PropTypes.string.isRequired
 };
 
 export default withRouter(HomeContent);
