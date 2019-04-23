@@ -124,7 +124,7 @@ export function answered(authedUser, questions, users) {
 		});
 	}
 
-	arr.sort((a, b) => b.timestamp - a.timestamp);
+	arr.sort((a, b) => a.timestamp - b.timestamp);
 
 	return arr;
 }
