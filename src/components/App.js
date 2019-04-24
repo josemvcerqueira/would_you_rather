@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { handleInitialData } from "../actions/shared";
@@ -83,7 +83,7 @@ class App extends Component {
 							path="/home"
 							render={() =>
 								authedUser ? (
-									<Redirect exact to="/" />
+									<Signin />
 								) : (
 									<Fragment>
 										<NavBar />
@@ -96,7 +96,7 @@ class App extends Component {
 							path="/poll/:id"
 							render={() =>
 								authedUser ? (
-									<Redirect exact to="/" />
+									<Signin />
 								) : (
 									<Fragment>
 										<NavBar />
@@ -109,7 +109,7 @@ class App extends Component {
 							path="/newquestion"
 							render={() =>
 								authedUser ? (
-									<Redirect exact to="/" />
+									<Signin />
 								) : (
 									<Fragment>
 										<NavBar />
@@ -122,7 +122,7 @@ class App extends Component {
 							path="/leaderboard"
 							render={() =>
 								authedUser ? (
-									<Redirect exact to="/" />
+									<Signin />
 								) : (
 									<Fragment>
 										<NavBar />

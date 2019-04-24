@@ -2,6 +2,7 @@ import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 import { handleAuthedUser } from "../../actions/authedUser";
 import logo from "../../assets/react-redux.png";
 import {
@@ -52,20 +53,25 @@ const CardHead = () => {
 
 class Signin extends Component {
 	state = {
-		open: false
+		open: false,
+		authedUser: ""
 	};
 
 	handleClick = () => {
 		this.setState(state => ({ open: !state.open }));
 	};
 
-	handleAuthedUserClick = user => {
-		this.props.dispatch(handleAuthedUser(user.id));
+	handleBtnClick = id => {
+		this.setState(state => ({ authedUser: id }));
+	};
+
+	handleSubmit = user => {
+		this.props.dispatch(handleAuthedUser(this.state.authedUser));
 	};
 
 	render() {
-		const { usersArr, authedUser } = this.props;
-		const { handleClick, state, handleAuthedUserClick } = this;
+		const { usersArr, authedUser, location } = this.props;
+		const { handleClick, state, handleBtnClick, handleSubmit } = this;
 		return (
 			<Card className={styles.card}>
 				<div className={styles.cardactionarea}>
@@ -93,7 +99,7 @@ class Signin extends Component {
 										key={user.name}
 										button
 										onClick={() => {
-											handleAuthedUserClick(user);
+											handleBtnClick(user.id);
 										}}
 									>
 										<Avatar
@@ -114,7 +120,7 @@ class Signin extends Component {
 							</List>
 						</Collapse>
 
-						{authedUser === null ? (
+						{this.state.authedUser === "" ? (
 							<Link to={"/"}>
 								<Button
 									className={styles.btn}
@@ -131,10 +137,11 @@ class Signin extends Component {
 								</Button>
 							</Link>
 						) : (
-							<Link to={"/home"}>
+							<Link to={`${location.pathname}`}>
 								<Button
 									className={styles.btn}
 									variant="contained"
+									onClick={handleSubmit}
 								>
 									<Typography
 										align="center"
@@ -142,7 +149,7 @@ class Signin extends Component {
 										component="p"
 										className={styles.btn__text}
 									>
-										Welcome {authedUser}
+										Welcome {this.state.authedUser}
 									</Typography>
 								</Button>
 							</Link>
@@ -163,10 +170,10 @@ function mapStateToProps({ users, authedUser }) {
 Signin.propTypes = {
 	authedUser: PropTypes.string,
 	dispatch: PropTypes.func.isRequired,
+	usersArr: PropTypes.array.isRequired,
 	history: PropTypes.object.isRequired,
 	location: PropTypes.object.isRequired,
-	match: PropTypes.object.isRequired,
-	usersArr: PropTypes.array.isRequired
+	match: PropTypes.object.isRequired
 };
 
-export default connect(mapStateToProps)(Signin);
+export default connect(mapStateToProps)(withRouter(Signin));
