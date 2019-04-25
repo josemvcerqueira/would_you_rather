@@ -51,7 +51,7 @@ class NewPoll extends Component {
 				optionTwo: ""
 			}))
 		);
-		history.push("/home");
+		history.push("/");
 	};
 
 	render() {

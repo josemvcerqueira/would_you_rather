@@ -124,7 +124,7 @@ export function answered(authedUser, questions, users) {
 		});
 	}
 
-	arr.sort((a, b) => a.timestamp - b.timestamp);
+	arr.sort((a, b) => b.timestamp - a.timestamp);
 
 	return arr;
 }
@@ -179,10 +179,10 @@ export function leaderboardScores(users) {
 export function handleLocation(location) {
 	let result;
 
-	if (location.pathname === "/home") result = 0;
+	if (location.pathname === "/") result = 0;
 	else if (location.pathname === "/newquestion") result = 1;
 	else if (location.pathname === "/leaderboard") result = 2;
-	else result = 3;
+	else result = 4;
 
 	return result;
 }

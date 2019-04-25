@@ -44,7 +44,6 @@ class NavBar extends Component {
   handleLogout = event => {
     event.preventDefault();
     this.props.dispatch(handleLogout(null));
-    this.props.history.push("/");
   };
 
   render() {
@@ -62,23 +61,32 @@ class NavBar extends Component {
                 onChange={handleChange}
                 indicatorColor="secondary"
               >
-                <LinkTab component={NavLink} to="/home" label="Home" />
                 <LinkTab
+                  className={styles.hover}
+                  component={NavLink}
+                  to="/"
+                  label="Home"
+                />
+                <LinkTab
+                  className={styles.hover}
                   component={NavLink}
                   to="/newquestion"
                   label="New Question"
                 />
                 <LinkTab
+                  className={styles.hover}
                   component={NavLink}
                   to="/leaderboard"
                   label="Leaderboard"
                 />
+                <Tab className={styles.name} disabled label={name} />
                 <Tab
                   disabled
                   className={styles.avatar}
                   icon={<Avatar src={avatar} alt={name + " photo"} />}
                 />
                 <LinkTab
+                  className={styles.hover}
                   component={NavLink}
                   to="/"
                   onClick={handleLogout}

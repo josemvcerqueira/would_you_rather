@@ -29,7 +29,8 @@ const ErrorPage = () => {
 					>
 						👉
 					</span>
-					You need to head to our homepage to Sign in! Clik me
+					The page you are looking for does not exist. Click me to
+					head to our homepage!
 					<span
 						role="img"
 						aria-label="hand pointing left"

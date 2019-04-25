@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
+import { withRouter, Redirect } from "react-router-dom";
 import { answered, unAnswered } from "../../utils/helpers";
 import PollResult from "./pollresult/PollResult";
 import OldPoll from "./oldpoll/OldPoll";
@@ -31,6 +31,8 @@ const Poll = ({ answeredData, unansweredData }) => {
 			/>
 		);
 	}
+
+	return <Redirect to="/error" />;
 };
 
 function mapStateToProps({ users, authedUser, questions }, { match }) {

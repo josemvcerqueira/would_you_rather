@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { Route, Switch, BrowserRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { handleInitialData } from "../actions/shared";
@@ -73,14 +73,15 @@ class App extends Component {
 		this.props.dispatch(handleInitialData());
 	}
 	render() {
+		console.log(this.props);
 		const { initialData, authedUser } = this.props;
 		return (
 			<BrowserRouter>
 				{initialData ? null : (
 					<Switch>
-						<Route exact path="/" component={Signin} />
 						<Route
-							path="/home"
+							exact
+							path="/"
 							render={() =>
 								authedUser ? (
 									<Signin />

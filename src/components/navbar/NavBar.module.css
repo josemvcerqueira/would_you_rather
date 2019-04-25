@@ -15,6 +15,15 @@
 }
 
 .avatar {
+	opacity: 1 !important;
+	min-width: 0 !important;
+}
+
+.name {
 	margin-left: auto !important;
+	opacity: 1 !important;
+}
+
+.hover:hover {
 	opacity: 1 !important;
 }
