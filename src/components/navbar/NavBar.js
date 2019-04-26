@@ -29,12 +29,17 @@ class NavBar extends Component {
     value: 0
   };
 
-  componentWillReceiveProps(nextProps) {
-    if (this.props.location.pathname !== nextProps.location.pathname) {
-      this.setState({
-        value: handleLocation(nextProps.location)
-      });
+  static getDerivedStateFromProps(nextProps, prevState) {
+    let path = handleLocation(nextProps.location);
+    if (path !== prevState.value) {
+      return {
+        value: path
+      };
     }
+
+    return {
+      value: prevState.value
+    };
   }
 
   handleChange = (event, value) => {
