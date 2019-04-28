@@ -52,7 +52,7 @@ class NavBar extends Component {
   };
 
   render() {
-    const { avatar, name } = this.props;
+    const { avatar, name, location } = this.props;
     const { value } = this.state;
     const { handleChange, handleLogout } = this;
     return (
@@ -75,7 +75,7 @@ class NavBar extends Component {
                 <LinkTab
                   className={styles.hover}
                   component={NavLink}
-                  to="/newquestion"
+                  to="/add"
                   label="New Question"
                 />
                 <LinkTab
@@ -92,8 +92,8 @@ class NavBar extends Component {
                 />
                 <LinkTab
                   className={styles.hover}
+                  to={location.pathname}
                   component={NavLink}
-                  to="/"
                   onClick={handleLogout}
                   label="Logout"
                 />

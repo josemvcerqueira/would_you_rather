@@ -180,7 +180,7 @@ export function handleLocation(location) {
 	let result;
 
 	if (location.pathname === "/") result = 0;
-	else if (location.pathname === "/newquestion") result = 1;
+	else if (location.pathname === "/add") result = 1;
 	else if (location.pathname === "/leaderboard") result = 2;
 	else result = 4;
 

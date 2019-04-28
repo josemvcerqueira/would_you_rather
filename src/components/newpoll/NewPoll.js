@@ -35,7 +35,7 @@ class NewPoll extends Component {
 	handleSubmit = event => {
 		event.preventDefault();
 		const { optionOne, optionTwo } = this.state;
-		const { authedUser, dispatch, history } = this.props;
+		const { authedUser, history, onSubmit } = this.props;
 		const question = {
 			optionOneText: optionOne,
 			optionTwoText: optionTwo,
@@ -45,7 +45,7 @@ class NewPoll extends Component {
 		if (!question.optionOneText || !question.optionTwoText) return;
 		if (question.optionOneText === question.optionTwoText) return;
 
-		dispatch(handleNewQuestion(question)).then(
+		onSubmit(question).then(
 			this.setState(() => ({
 				optionOne: "",
 				optionTwo: ""
@@ -139,12 +139,21 @@ function mapStateToProps({ authedUser }) {
 	};
 }
 
+function mapDispatchToProps(dispatch) {
+	return {
+		onSubmit: question => dispatch(handleNewQuestion(question))
+	};
+}
+
 NewPoll.propTypes = {
 	authedUser: PropTypes.string.isRequired,
-	dispatch: PropTypes.func.isRequired,
 	history: PropTypes.object.isRequired,
 	location: PropTypes.object.isRequired,
-	match: PropTypes.object.isRequired
+	match: PropTypes.object.isRequired,
+	onSubmit: PropTypes.func.isRequired
 };
 
-export default connect(mapStateToProps)(withRouter(NewPoll));
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(withRouter(NewPoll));

@@ -93,7 +93,7 @@ class App extends Component {
 							}
 						/>
 						<Route
-							path="/poll/:id"
+							path="/questions/:id"
 							render={() =>
 								authedUser ? (
 									<Signin />
@@ -106,7 +106,7 @@ class App extends Component {
 							}
 						/>
 						<Route
-							path="/newquestion"
+							path="/add"
 							render={() =>
 								authedUser ? (
 									<Signin />

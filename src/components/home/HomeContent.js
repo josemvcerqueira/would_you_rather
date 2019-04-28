@@ -6,7 +6,7 @@ import styles from "./HomeContent.module.css";
 
 const HomeContent = ({ text, id, history }) => {
   const handleClick = () => {
-    history.push(`/poll/${id}`);
+    history.push(`/questions/${id}`);
   };
 
   return (
